@@ -15,6 +15,7 @@ import java.util.UUID;
 @RestController
 @RequiredArgsConstructor
 public class SubscriptionController {
+
     private final SubscriptionService subscriptionService;
 
     @PostMapping("/users/{id}/subscriptions")

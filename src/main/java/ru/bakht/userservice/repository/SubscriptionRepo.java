@@ -10,14 +10,14 @@ import java.util.UUID;
 
 public interface SubscriptionRepo extends JpaRepository<Subscription, UUID> {
 
-    List<Subscription> findByUser(User user);
-
     @Query("SELECT s.serviceName, COUNT(s) as count " +
             "FROM Subscription s " +
             "GROUP BY s.serviceName " +
             "ORDER BY count DESC " +
             "LIMIT 3")
     List<Object[]> findTop3PopularSubscriptions();
+
+    List<Subscription> findByUser(User user);
 
     boolean existsByUser_IdAndServiceName(UUID userId, String serviceName);
 }
